@@ -1,0 +1,46 @@
+# -------------------- Generierte Dateien & Ordner --------------------
+# Temporäre und Cache-Dateien
+*.tmp
+*.log
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+cache/
+
+# Composer-Abhängigkeiten
+# Dieses Verzeichnis enthält die installierten Abhängigkeiten
+# und sollte nicht in Git gespeichert werden.
+vendor/
+
+# Symfony-spezifische Ordner
+var/
+public/build/
+
+
+
+
+# -------------------- Sensible Daten & Konfigurationen --------------------
+# Dateien mit Datenbank-Zugangsdaten oder API-Schlüsseln
+# Achtung: Ändere den Namen, wenn deine Konfigurationsdatei anders heißt.
+config/parameters.yaml
+config/database.php
+.env
+.env.local
+.htaccess
+myList_db_config.php
+myList_mail_config.php
+myList_send_email_lib.php
+
+# -------------------- Versionskontroll-spezifische Dateien --------------------
+# Sicherungsdateien von Editoren (z.B. Vim)
+*~
+*.swp
+.DS_Store
+
+# -------------------- Deployment-spezifische Dateien --------------------
+# Dateien, die oft beim Deployment erstellt werden
+.gitkeep
+.deployer/
+.ssh/
