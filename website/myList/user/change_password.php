@@ -10,16 +10,16 @@ ini_set('error_log', dirname(dirname(__DIR__)) . '/config/php_error_debug.log');
 
 // Binde die Konfigurationsdatei ein, die die ENABLE_DEBUG_LOGGING Konstante definiert.
 // Die config.php muss sich im /config/ Verzeichnis befinden.
-require_once dirname(dirname(__DIR__)) . '/config/config.php';
+require_once dirname(__DIR__, 3) . '/config/myList/myList_config.php';
 
 // auth_middleware.php für CORS-Header und JSON-Input-Handling einbinden
-require_once dirname(dirname(__DIR__)) . '/config/auth_middleware.php';
+require_once dirname(__DIR__, 3) . '/config/myList/myList_auth_middleware.php';
 if (defined('ENABLE_DEBUG_LOGGING') && ENABLE_DEBUG_LOGGING === true) {
     error_log("DEBUG: auth_middleware.php in change_password.php eingebunden.");
 }
 
 // Die interne Logik-Datei aus dem sicheren /config/ Ordner einbinden
-require_once dirname(dirname(__DIR__)) . '/config/user_management_lib.php';
+require_once dirname(__DIR__, 3) . '/config/myList/myList_user_management_lib.php';
 if (defined('ENABLE_DEBUG_LOGGING') && ENABLE_DEBUG_LOGGING === true) {
     error_log("DEBUG: user_management_lib.php in change_password.php eingebunden.");
 }

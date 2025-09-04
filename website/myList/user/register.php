@@ -1,39 +1,20 @@
 <?php
 // Dies ist der absolute Pfad zum Verzeichnis der aktuellen Datei.
-$logFile = __DIR__ . '/config/error_log.txt';
+$logFile = __DIR__ . '/error_log.txt';
 
 // auth_middleware.php für CORS-Header und JSON-Input-Handling einbinden
 // Der Pfad geht zwei Ebenen nach oben (zum htdocs-Root) und dann in den /config/ Ordner.
-$auth = dirname(__DIR__, 3) . '/config/myList_auth_middleware.php';
+$auth = dirname(__DIR__, 3) . '/config/myList/myList_auth_middleware.php';
+//$message = "Die Dateien wurden am " . date('Y-m-d H:i:s') . " eingebunden.\n";
+//$message .= "Pfad zu auth_middleware: " . $auth . "\n";
 
+//error_log($message, 3, $logFile);
 require_once $auth;
-error_log($auth, 3, $logFile);
-
+//$message .= "Nach require once: " . $auth . "\n";
 // Die interne Logik-Datei aus dem sicheren /config/ Ordner einbinden
 // Der Pfad geht zwei Ebenen nach oben (zum htdocs-Root) und dann in den /config/ Ordner.
-$man = dirname(__DIR__, 3) . '/config/myList_user_management_lib.php';
+$man = dirname(__DIR__, 3) . '/config/myList/myList_user_management_lib.php';
 require_once $man;
-error_log($man, 3, $logFile);
-// Dieser Endpunkt benötigt KEINEN requireAuth() Aufruf,
-// da sich Benutzer hier registrieren, bevor sie eingeloggt sind.
-
-
-
-
-// Die Nachricht, die Sie protokollieren möchten.
-// Die Variablen werden in doppelte Anführungszeichen eingeschlossen, um sie korrekt auszuwerten.
-$message = "Die Dateien wurden am " . date('Y-m-d H:i:s') . " eingebunden.\n";
-$message .= "Pfad zu auth_middleware: " . $auth . "\n";
-$message .= "Pfad zu user_management_lib: " . $man . "\n";
-
-/**
- * Schreibt eine Nachricht in eine Datei.
- *
- * @param string $message Die zu protokollierende Nachricht.
- * @param int $messageType Der Typ der Nachricht. 3 bedeutet "in eine Datei schreiben".
- * @param string $destination Der Pfad zur Zieldatei.
- */
-error_log($message, 3, $logFile);
 
 
 
@@ -45,13 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // JSON-Input lesen
 $input = getJsonInput();
+
 $username = $input['username'] ?? '';
 $password = $input['password'] ?? '';
 $email = $input['email'] ?? null;
 $role = $input['role'] ?? 'user';
 
+/* $message .= $username . "\n";
+$message .= $password . "\n";
+$message .= $email . "\n";
+$message .= date('Y-m-d H:i:s') . "\n";
+error_log($message, 3, $logFile); */
+
 // Die interne Funktion aufrufen
 $response = processUserRegistration($username, $password, $email, $role);
+error_log($response['message'], 3, $logFile);
 
 // Status-Code basierend auf der Antwort setzen
 if ($response['status'] === 'error') {

@@ -1,1 +1,1 @@
-/mnt/web208/b0/15/536515/htdocs/config/myList_auth_middleware.php
+Benutzername oder E-Mail existiert bereits.Benutzername oder E-Mail existiert bereits.Benutzername oder E-Mail existiert bereits.Benutzername oder E-Mail existiert bereits.

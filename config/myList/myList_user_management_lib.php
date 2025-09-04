@@ -10,14 +10,14 @@ ini_set('error_log', __DIR__ . '/php_error_debug.log');
 
 // Binde die Konfigurationsdatei ein, die die ENABLE_DEBUG_LOGGING Konstante definiert.
 // Die config.php muss sich im selben Verzeichnis wie user_management_lib.php befinden.
-require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/myList_config.php');
 
 // Wichtig: db_config.php und send_email_lib.php müssen im gleichen Verzeichnis (oder absolut erreichbar) sein
 require_once __DIR__ . '/myList_db_config.php';
 require_once __DIR__ . '/myList_send_email_lib.php'; // Für E-Mail-Versand
 
 if (defined('ENABLE_DEBUG_LOGGING') && ENABLE_DEBUG_LOGGING === true) {
-    error_log("DEBUG: user_management_lib.php geladen.");
+    error_log("DEBUG: myList_user_management_lib.php geladen.");
 }
 
 // Funktion zur Generierung eines eindeutigen Verifizierungscodes

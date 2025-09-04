@@ -4,11 +4,11 @@
 
 // auth_middleware.php für CORS-Header und JSON-Input-Handling einbinden
 // Korrigierter Pfad, da auth_middleware.php im übergeordneten /config/ Ordner liegt
-require_once dirname(dirname(__DIR__)) . '/config/auth_middleware.php';
+require_once dirname(__DIR__, 3) . '/config/myList/myList_auth_middleware.php';
 error_log("DEBUG: auth_middleware.php included in request_password_reset.php.");
 
 // Die interne Logik-Datei aus dem sicheren /config/ Ordner einbinden
-require_once dirname(dirname(__DIR__)) . '/config/user_management_lib.php';
+require_once dirname(__DIR__, 3) . '/config/myList/myList_user_management_lib.php';
 error_log("DEBUG: user_management_lib.php included in request_password_reset.php.");
 
 // Dieser Endpunkt benötigt KEINE requireAuth() Aufruf.

@@ -3,12 +3,12 @@
 // Dieser Endpunkt verarbeitet E-Mail-Verifizierungsanfragen von der Flutter-App.
 
 // auth_middleware.php für CORS-Header und JSON-Input-Handling einbinden
-require_once dirname(dirname(__DIR__)) . '/config/auth_middleware.php';
-error_log("DEBUG: auth_middleware.php included in verify_email.php.");
+require_once dirname(__DIR__, 3) . '/config/myList/myList_auth_middleware.php';
+error_log("DEBUG: myList_auth_middleware.php included in verify_email.php.");
 
 // Die interne Logik-Datei aus dem sicheren /config/ Ordner einbinden
-require_once dirname(dirname(__DIR__)) . '/config/user_management_lib.php';
-error_log("DEBUG: user_management_lib.php included in verify_email.php.");
+require_once dirname(__DIR__, 3) . '/config/myList/myList_user_management_lib.php';
+error_log("DEBUG: myList_user_management_lib.php included in verify_email.php.");
 
 // Dieser Endpunkt benötigt KEINEN requireAuth() Aufruf,
 // da sich Benutzer hier verifizieren, bevor sie eingeloggt sind.
